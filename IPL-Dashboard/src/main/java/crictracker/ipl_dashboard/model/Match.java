@@ -1,4 +1,5 @@
-package CRIC.TRACKER.IPL.DASHBOARD.model;
+package crictracker.ipl_dashboard.model;
+
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;

@@ -1,4 +1,4 @@
-package CRIC.TRACKER.IPL.DASHBOARD.data;
+package crictracker.ipl_dashboard.data;
 
 public class MatchInput {
     private String id;
@@ -135,6 +135,4 @@ public class MatchInput {
     public void setUmpire2(String umpire2) {
         this.umpire2 = umpire2;
     }
-
-
 }
