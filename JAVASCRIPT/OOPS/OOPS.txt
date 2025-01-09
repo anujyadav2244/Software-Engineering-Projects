@@ -1,0 +1,37 @@
+Object-Oriented programming (OOP) is a acomputer programming model that organizes software around data, or objects, rather than functions and logic. An object can be defined as a data field that has unique attributes and behaviour.
+
+4 pillars of oop are :- Encapsulation, Abstraction , polymorphism, Inheritance
+
+this keyword behave differently in node & the browser:-
+
+node.js:-
+
+the javascript has 2 parts:-
+
+non-strict:-
+
+1. console.log(this)->{}
+2. function -> Global Object
+3. obj -> fn = object itself
+4.obj -> fn -> fn = Global Object
+
+strict:-
+1. console.log(this)->{}
+2.function -> undefined
+3. obj -> fn = Object Itself
+4.obj -> fn -> fn = Undefined
+
+browser:-
+the javascript has 2 parts:-
+non-strict:-
+1. console.log(this)-> window obj 
+2.function -> window obj
+3. obj -> fn = Object Itself
+4.obj -> fn -> fn = window obj
+
+strict:- 
+1. console.log(this)-> window obj 
+2.function -> undefined
+3. obj -> fn = Object Itself
+4.obj -> fn -> fn = undefined
+

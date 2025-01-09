@@ -1,0 +1,13 @@
+Functional programming is a programming paradugm designed to handle function in a better way in JS(mainly pure functions)
+
+Javascript is a multi-paradugm language. We can use object-oriented, procedural and functional programming paradigms all at the same them in javascript.
+
+Imperative & Declarative way of writing code:-
+
+Imperative(Imp)
+How to go about a problem.
+Emphasisies on what will be the approach how will structure the code what will be the logic
+
+
+Declarative(Dec)
+What to achive from the problem
