@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 ### React App ###
-Client/node_modules/
+src/frontend/node_modules/

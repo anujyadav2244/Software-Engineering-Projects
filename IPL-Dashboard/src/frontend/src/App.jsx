@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className='p-10 text-left'>
         <TeamPage />
       </div>
     </>
