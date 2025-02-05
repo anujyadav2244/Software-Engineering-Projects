@@ -2,10 +2,10 @@ package crictracker.ipl_dashboard.model;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document(collection="matches")
 public class Match {
     
     @Id
