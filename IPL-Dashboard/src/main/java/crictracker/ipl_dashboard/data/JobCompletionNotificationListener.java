@@ -20,7 +20,6 @@ public class JobCompletionNotificationListener implements JobExecutionListener {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    @SuppressWarnings("null")
     @Override
     public void afterJob(JobExecution jobExecution) {
         if (jobExecution.getStatus() == BatchStatus.COMPLETED) {

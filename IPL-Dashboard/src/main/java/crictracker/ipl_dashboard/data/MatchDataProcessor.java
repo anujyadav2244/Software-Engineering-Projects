@@ -8,12 +8,9 @@ import crictracker.ipl_dashboard.model.Match;
 
 public class MatchDataProcessor implements ItemProcessor<MatchInput, Match> {
 
-    /*
-     * private static final Logger log =
-     * LoggerFactory.getLogger(MatchDataProcessor.class);
-     */
     @Override
     public Match process(final MatchInput matchInput) throws Exception {
+        // Create a Match object from MatchInput
         Match match = new Match();
         match.setId(Long.parseLong(matchInput.getId()));
         match.setSeason(LocalDate.parse(matchInput.getSeason()));
@@ -27,13 +24,12 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match> {
 
         if ("bat".equals(matchInput.getTossDecision())) {
             firstInningTeam = matchInput.getTossWinner();
-            secondInningTeam = matchInput.getTossWinner().equals(matchInput.getTeam1()) ? matchInput.getTeam2()
-                    : matchInput.getTeam1();
+            secondInningTeam = matchInput.getTossWinner().equals(matchInput.getTeam1()) ? matchInput.getTeam2() : matchInput.getTeam1();
         } else {
             secondInningTeam = matchInput.getTossWinner();
-            firstInningTeam = matchInput.getTossWinner().equals(matchInput.getTeam1()) ? matchInput.getTeam2()
-                    : matchInput.getTeam1();
+            firstInningTeam = matchInput.getTossWinner().equals(matchInput.getTeam1()) ? matchInput.getTeam2() : matchInput.getTeam1();
         }
+
         match.setTeam1(firstInningTeam);
         match.setTeam2(secondInningTeam);
         match.setTossWinner(matchInput.getTossWinner());
@@ -47,6 +43,9 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match> {
         match.setMethod(matchInput.getMethod());
         match.setUmpire1(matchInput.getUmpire1());
         match.setUmpire2(matchInput.getUmpire2());
+
+        // Print match data to the console
+        System.out.println("Processed match: " + match);
 
         return match;
     }
