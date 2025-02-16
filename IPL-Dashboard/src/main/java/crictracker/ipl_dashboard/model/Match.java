@@ -1,38 +1,33 @@
-package crictracker.ipl_dashboard.data;
+package crictracker.ipl_dashboard.model;
 
-<<<<<<< HEAD
-import lombok.Data;
 
-@Data
-=======
+
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
-
-@Document(collection = "matches")
->>>>>>> 22ade01c6c48f8508deefc4b54e5a7b4c2e8fd1b
-public class MatchInput {
+@Document(collection="matches")
+public class Match {
+    
+    @Id
     private String id;
     private String season;
     private String city;
     private String date;
-    private String matchType;
+    private String match_type;
     private String venue;
     private String team1;
     private String team2;
-    private String tossWinner;
-    private String tossDecision;
+    private String toss_winner;
+    private String toss_decision;
     private String winner;
     private String result;
-    private String resultMargin;
-    private String targetRuns;
-    private String targetOvers; 
-    private String playerOfMatch;
+    private String  result_margin;
+    private String target_runs;
+    private String target_overs; 
+    private String player_of_match;
     private String method;
     private String umpire1;
     private String umpire2;
-<<<<<<< HEAD
-=======
     public String getId() {
         return id;
     }
@@ -57,11 +52,11 @@ public class MatchInput {
     public void setDate(String date) {
         this.date = date;
     }
-    public String getMatchType() {
-        return matchType;
+    public String getMatch_type() {
+        return match_type;
     }
-    public void setMatchType(String matchType) {
-        this.matchType = matchType;
+    public void setMatch_type(String match_type) {
+        this.match_type = match_type;
     }
     public String getVenue() {
         return venue;
@@ -81,17 +76,17 @@ public class MatchInput {
     public void setTeam2(String team2) {
         this.team2 = team2;
     }
-    public String getTossWinner() {
-        return tossWinner;
+    public String getToss_winner() {
+        return toss_winner;
     }
-    public void setTossWinner(String tossWinner) {
-        this.tossWinner = tossWinner;
+    public void setToss_winner(String toss_winner) {
+        this.toss_winner = toss_winner;
     }
-    public String getTossDecision() {
-        return tossDecision;
+    public String getToss_decision() {
+        return toss_decision;
     }
-    public void setTossDecision(String tossDecision) {
-        this.tossDecision = tossDecision;
+    public void setToss_decision(String toss_decision) {
+        this.toss_decision = toss_decision;
     }
     public String getWinner() {
         return winner;
@@ -105,29 +100,29 @@ public class MatchInput {
     public void setResult(String result) {
         this.result = result;
     }
-    public String getResultMargin() {
-        return resultMargin;
+    public String getResult_margin() {
+        return result_margin;
     }
-    public void setResultMargin(String resultMargin) {
-        this.resultMargin = resultMargin;
+    public void setResult_margin(String result_margin) {
+        this.result_margin = result_margin;
     }
-    public String getTargetRuns() {
-        return targetRuns;
+    public String getTarget_runs() {
+        return target_runs;
     }
-    public void setTargetRuns(String targetRuns) {
-        this.targetRuns = targetRuns;
+    public void setTarget_runs(String target_runs) {
+        this.target_runs = target_runs;
     }
-    public String getTargetOvers() {
-        return targetOvers;
+    public String getTarget_overs() {
+        return target_overs;
     }
-    public void setTargetOvers(String targetOvers) {
-        this.targetOvers = targetOvers;
+    public void setTarget_overs(String target_overs) {
+        this.target_overs = target_overs;
     }
-    public String getPlayerOfMatch() {
-        return playerOfMatch;
+    public String getPlayer_of_match() {
+        return player_of_match;
     }
-    public void setPlayerOfMatch(String playerOfMatch) {
-        this.playerOfMatch = playerOfMatch;
+    public void setPlayer_of_match(String player_of_match) {
+        this.player_of_match = player_of_match;
     }
     public String getMethod() {
         return method;
@@ -147,7 +142,6 @@ public class MatchInput {
     public void setUmpire2(String umpire2) {
         this.umpire2 = umpire2;
     }
-
-
->>>>>>> 22ade01c6c48f8508deefc4b54e5a7b4c2e8fd1b
+    
+    
 }
