@@ -1,6 +1,6 @@
 package crictracker.ipl_dashboard.model;
 
-import java.time.LocalDate;
+
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,35 +9,35 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Match {
     
     @Id
-    private long id;
-    private LocalDate season;
+    private String id;
+    private String season;
     private String city;
-    private LocalDate date;
-    private String matchType;
+    private String date;
+    private String match_type;
     private String venue;
     private String team1;
     private String team2;
-    private String tossWinner;
-    private String tossDecision;
+    private String toss_winner;
+    private String toss_decision;
     private String winner;
     private String result;
-    private int  resultMargin;
-    private int targetRuns;
-    private int targetOvers; 
-    private String playerOfMatch;
+    private String  result_margin;
+    private String target_runs;
+    private String target_overs; 
+    private String player_of_match;
     private String method;
     private String umpire1;
     private String umpire2;
-    public long getId() {
+    public String getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
-    public LocalDate getSeason() {
+    public String getSeason() {
         return season;
     }
-    public void setSeason(LocalDate season) {
+    public void setSeason(String season) {
         this.season = season;
     }
     public String getCity() {
@@ -46,17 +46,17 @@ public class Match {
     public void setCity(String city) {
         this.city = city;
     }
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
-    public String getMatchType() {
-        return matchType;
+    public String getMatch_type() {
+        return match_type;
     }
-    public void setMatchType(String matchType) {
-        this.matchType = matchType;
+    public void setMatch_type(String match_type) {
+        this.match_type = match_type;
     }
     public String getVenue() {
         return venue;
@@ -76,17 +76,17 @@ public class Match {
     public void setTeam2(String team2) {
         this.team2 = team2;
     }
-    public String getTossWinner() {
-        return tossWinner;
+    public String getToss_winner() {
+        return toss_winner;
     }
-    public void setTossWinner(String tossWinner) {
-        this.tossWinner = tossWinner;
+    public void setToss_winner(String toss_winner) {
+        this.toss_winner = toss_winner;
     }
-    public String getTossDecision() {
-        return tossDecision;
+    public String getToss_decision() {
+        return toss_decision;
     }
-    public void setTossDecision(String tossDecision) {
-        this.tossDecision = tossDecision;
+    public void setToss_decision(String toss_decision) {
+        this.toss_decision = toss_decision;
     }
     public String getWinner() {
         return winner;
@@ -100,31 +100,29 @@ public class Match {
     public void setResult(String result) {
         this.result = result;
     }
-    public int getResultMargin() {
-        return resultMargin;
+    public String getResult_margin() {
+        return result_margin;
     }
-    public void setResultMargin(int resultMargin) {
-        this.resultMargin = resultMargin;
+    public void setResult_margin(String result_margin) {
+        this.result_margin = result_margin;
     }
-    public int getTargetRuns() {
-        return targetRuns;
+    public String getTarget_runs() {
+        return target_runs;
     }
-    public void setTargetRuns(int targetRuns) {
-        this.targetRuns = targetRuns;
+    public void setTarget_runs(String target_runs) {
+        this.target_runs = target_runs;
     }
-    public int getTargetOvers() {
-        return targetOvers;
+    public String getTarget_overs() {
+        return target_overs;
     }
-
-    public void setTargetOvers(int targetOvers) {
-        this.targetOvers = targetOvers;
+    public void setTarget_overs(String target_overs) {
+        this.target_overs = target_overs;
     }
-
-    public String getPlayerOfMatch() {
-        return playerOfMatch;
+    public String getPlayer_of_match() {
+        return player_of_match;
     }
-    public void setPlayerOfMatch(String playerOfMatch) {
-        this.playerOfMatch = playerOfMatch;
+    public void setPlayer_of_match(String player_of_match) {
+        this.player_of_match = player_of_match;
     }
     public String getMethod() {
         return method;
@@ -144,4 +142,6 @@ public class Match {
     public void setUmpire2(String umpire2) {
         this.umpire2 = umpire2;
     }
+    
+    
 }

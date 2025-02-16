@@ -7,7 +7,7 @@ import { MatchSmallCard } from '../Components/MatchSmallCard'
   useEffect(
     () => { //in the useEffect func we cannot pass this async function so we need to make a new function and call it inside the useEffect
       const fetchMatches = async () => {
-        const response = await fetch('http://localhost:8080/team/Delhi%20Capitals');
+        const response = await fetch('http://localhost:8080/match/team/Delhi%20Capitals');
         const data = await response.json();
         console.log(data);
       };
