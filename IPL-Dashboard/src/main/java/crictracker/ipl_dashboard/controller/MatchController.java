@@ -41,7 +41,7 @@ public class MatchController {
     public long getTotalMatchesForTeam(@PathVariable String teamName) {
         return matchRepository.countByTeam1OrTeam2(teamName, teamName);
     }
-
+ 
     @GetMapping("/total-matches-all")
     public long getTotalMatches() {
         return matchRepository.count();

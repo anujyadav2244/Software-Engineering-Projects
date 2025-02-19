@@ -22,7 +22,7 @@ public class CustomMatchRepositoryImpl implements CustomMatchRepository {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    // ✅ Fixed method name to match interface
+    
     @Override
     public List<TeamMatchCount> getTotalMatchesByTeam() {
         Aggregation aggregation = Aggregation.newAggregation(
@@ -37,7 +37,6 @@ public class CustomMatchRepositoryImpl implements CustomMatchRepository {
         return results.getMappedResults();
     }
 
-    // ✅ Fixed incorrect field references in conditions
     @Override
     public List<TeamStats> getTotalMatchesByTeamName() {
         Aggregation team1Aggregation = Aggregation.newAggregation(
@@ -68,7 +67,6 @@ public class CustomMatchRepositoryImpl implements CustomMatchRepository {
         return mergeTeamStats(team1Results, team2Results);
     }
 
-    // ✅ Improved merge logic to include missing teams
     private List<TeamStats> mergeTeamStats(List<TeamStats> team1, List<TeamStats> team2) {
         Map<String, TeamStats> mergedStats = new HashMap<>();
 
