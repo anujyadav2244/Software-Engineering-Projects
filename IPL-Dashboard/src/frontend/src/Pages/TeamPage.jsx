@@ -1,68 +1,101 @@
-import { React, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { MatchDetailedCard } from '../Components/MatchDetailedCard';
-import { MatchSmallCard } from '../Components/MatchSmallCard';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom"; 
+import axios from "axios";
+import { MatchSmallCard } from "../Components/MatchSmallCard";
 
 export const TeamPage = () => {
-  // const [team, setTeam] = useState({matches: []});
-  // const { teamName } = useParams();
-  // useEffect(
-  //   () => {
-  //     const fetchMatches = async () => {
-  //       const response = await fetch('http://localhost:8080/team/${teamName}');
-  //       const data = await response.json();
-  //       console.log(data);
-  //     };
-  //     fetchMatches();
-  //   }, [] In brackets put teamName
-  // );
+  const { teamName } = useParams(); 
+  const [matches, setMatches] = useState([]);
+  const [error, setError] = useState(null);
+  const [year, setYear] = useState("2010");
+  const [loading, setLoading] = useState(true);
 
-  useEffect(
-    () => { //in the useEffect func we cannot pass this async function so we need to make a new function and call it inside the useEffect
-      const fetchMatches = async () => {
-        const response = await fetch('http://localhost:8080/match/team/Delhi%20Capitals');
-        const data = await response.json();
-        console.log(data);
-      };
-      fetchMatches();
-    
-    });
-  return (
-    <div className='TeamPage'>
-        <h1 className = 'text-4xl font-bold mb-4'>Team Name</h1>
-        <MatchDetailedCard />
-        <MatchSmallCard />
-        <MatchSmallCard />
-        <MatchSmallCard />
-    </div>
-  )
-}
+  useEffect(() => {
+    const fetchMatches = async () => {  
+      try {
+        const response = await axios.get(`http://localhost:8080/match/team/${teamName}`);
+        console.log("Fetched Data:", response.data);
 
-    // if (!team || !team.teamName) {
-    //   return <h1>Team not found</h1>;
+        const filteredMatches = response.data.filter(
+          (match) => match.team1 === teamName || match.team2 === teamName
+        );
 
-    // }
+        setMatches(filteredMatches);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (teamName) fetchMatches();
+  }, [teamName]);
+
+  if (loading) {
     return (
-      <div className="TeamPage">
-        <div className = " text-lg" key={matches[0].id}>
-          <h1 className="text-4xl font-bold mt-10 mb-4">{matches[0].team1}</h1>
-        </div>
-        <h3  className = 'text-2xl font-bold mb-4 '>Latest Matches</h3>
-        {matches.slice(0,1).map((match) => (
-          <MatchDetailedCard key={match.id} match={match}/> 
-          // teamName={team.teamName} add this in the above line
-        ))}
-        {/* {matches.slice(1,4).map((match,index) => (
-          <MatchSmallCard key={match.id} match={match}/> 
-          // teamName={team.teamName} add this in the above line
-        ))} */}
-        {matches.slice(1,4).map((match,index) => (
-          <MatchSmallCard key={`${match.id}-${index}`} match={match}/> 
-          // teamName={team.teamName} add this in the above line
-        ))}
-        {/*
-        <MatchSmallCard />
-        <MatchSmallCard />  */}
+      <div className="flex justify-center items-center fixed inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900">
+        <div className="w-12 h-12 border-4 border-rose-400 border-dashed rounded-full animate-spin"></div>
       </div>
     );
-  
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center fixed inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900">
+        <h2 className="text-red-500 text-2xl">Error: {error}</h2>
+      </div>
+    );
+  }
+
+  if (matches.length === 0) {
+    return (
+      <div className="flex justify-center items-center fixed inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900">
+        <h2 className="text-2xl text-gray-300">No matches found for {teamName}.</h2>
+      </div>
+    );
+  }
+
+  const years = Array.from({ length: 2024 - 2008 + 1 }, (_, i) => (2008 + i).toString());
+
+  return (
+    <div className="fixed inset-0 w-screen h-screen overflow-y-auto bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 text-white font-poppins">
+      <div className="max-w-6xl mx-auto pt-10">
+        {/* Team Name */}
+        <h1 className="text-6xl font-bold text-center text-rose-400 mb-10 drop-shadow-lg">
+          {teamName}
+        </h1>
+
+        {/* Year Selection Dropdown */}
+        <div className="flex justify-center mb-10">
+          <label htmlFor="yearSelect" className="text-lg font-semibold text-gray-300 mr-2">Select Year:</label>
+          <select
+            id="yearSelect"
+            className="p-3 bg-gray-800 text-gray-100 border border-gray-600 rounded-md shadow-md focus:ring-2 focus:ring-rose-400 focus:outline-none"
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+          >
+            {years.map((y) => (
+              <option key={y} value={y}>{y}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Match Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+          {matches
+            .filter((match) => match.date.includes(year))
+            .slice(0, 6)
+            .map((match, index) => (
+              <div
+                key={index}
+                className="p-6 rounded-xl border border-gray-500/30 bg-white/10 backdrop-blur-xl shadow-lg transform transition-all hover:scale-105 hover:shadow-glow hover:bg-white/20"
+              >
+                <MatchSmallCard match={match} teamName={teamName} />
+              </div>
+            ))}
+        </div>
+      </div>
+    </div>
+  );
+};
