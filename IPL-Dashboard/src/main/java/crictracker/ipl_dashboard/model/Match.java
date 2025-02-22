@@ -1,7 +1,5 @@
 package crictracker.ipl_dashboard.model;
 
-
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -28,6 +26,7 @@ public class Match {
     private String method;
     private String umpire1;
     private String umpire2;
+    
     public String getId() {
         return id;
     }
