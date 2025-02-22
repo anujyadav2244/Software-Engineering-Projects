@@ -11,12 +11,16 @@ export const MatchSmallCard = ({ match, teamName }) => {
 
   return (
     <div>
+      
       {/* Show searched team on the left and opponent on the right */}
       <h3 className="border rounded-lg shadow-lg mb-5 p-4 bg-gray-200 cursor-pointer">
         <div className="flex flex-col items-center">
         <p className="text-2xl mb-4 text-black">
           {teamName} vs  <Link to={opponentTeamRoute} className="text-purple-950 font-bold underline"> {opponentTeam}</Link></p>
         <p className = "text-lg  mb-4 text-gray-700">{match.winner} won by {match.result_margin} {match.result}</p>
+        <div className="font-semibold text-2xl text-black mb-2 text-right">
+        <p>{match.date}</p>
+      </div>
         </div>
       </h3>
     </div>
