@@ -25,3 +25,4 @@ dist-ssr
 
 ### React App ###
 src/frontend/node_modules/
+.vercel
